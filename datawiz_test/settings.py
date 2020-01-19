@@ -25,7 +25,7 @@ SECRET_KEY = 'rkq^%33)**7eegazjz8bcqy8u=%^gg0kvn)p$59x-@b#zy$*-)'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['dw-demo-test.herokuapp.com']
 
 
 # Application definition
@@ -136,4 +136,5 @@ STATIC_URL = '/static/'
 
 # Heroku: Update database configuration from $DATABASE_URL.
 import dj_database_url
-db_from_env = dj_database_url.config(conn_max_age=500) DATABASES['default'].update(db_from_env)
+db_from_env = dj_database_url.config(conn_max_age=500)
+DATABASES['default'].update(db_from_env)
