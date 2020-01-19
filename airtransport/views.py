@@ -1,17 +1,13 @@
-from django.shortcuts import render
 from django.contrib.auth.models import User
 from django.http import Http404
-from django.shortcuts import render, redirect
 
-from rest_framework import viewsets, generics, views, status
+from rest_framework import viewsets, views, status
 from rest_framework.response import Response
 from rest_framework.permissions import IsAuthenticated
 
-from rest_framework_simplejwt.tokens import RefreshToken
-
 from .models import BoardingPasses, Flights, Bookings, Tickets, TicketFlights, Seats
-from .serializers import UserSerializer, BoardingPassesSerializer, FlightsSerializer, BookingsSerializer, TicketsSerializer, TicketFlightsSerializer, SeatsSerializer#, FlightsViewSerializer
-import pdb
+from .serializers import UserSerializer, BoardingPassesSerializer, FlightsSerializer, \
+    BookingsSerializer, TicketsSerializer, TicketFlightsSerializer, SeatsSerializer
 
 
 class UserViewSet(viewsets.ModelViewSet):
@@ -45,13 +41,13 @@ class BoardingPassesViews(views.APIView):
         return Response(status=status.HTTP_204_NO_CONTENT)
 
 
-class FlightsView(viewsets.ModelViewSet):
+class FlightsViewSet(viewsets.ModelViewSet):
     permission_classes = [IsAuthenticated]
     queryset = Flights.objects.all()
     serializer_class = FlightsSerializer
 
 
-class Bookings(viewsets.ModelViewSet):
+class BookingsViewSet(viewsets.ModelViewSet):
     queryset = Bookings.objects.all()
     serializer_class = BookingsSerializer
 
@@ -82,17 +78,17 @@ class SeatsDetail(views.APIView):
         return Response(status=status.HTTP_204_NO_CONTENT)
 
 
-class TicketFlights(viewsets.ModelViewSet):
+class TicketFlightsViewSet(viewsets.ModelViewSet):
     queryset = TicketFlights.objects.all()
     serializer_class = TicketFlightsSerializer
 
 
-class Tickets(viewsets.ModelViewSet):
+class TicketsViewSet(viewsets.ModelViewSet):
     queryset = Tickets.objects.all()
     serializer_class = TicketsSerializer
 
 
-# class FlightsViewView(views.APIView):
+# class FlightsView(views.APIView):
 #     def get_object(self, pk):
 #         try:
 #             return Flights.objects.get(pk=pk)

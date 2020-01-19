@@ -1,6 +1,7 @@
 from django.contrib.auth.models import User
-from .models import BoardingPasses, Flights, Bookings, Tickets, TicketFlights, Seats, AirportsData
 from rest_framework import serializers
+from .models import BoardingPasses, Flights, Bookings, Tickets, TicketFlights, Seats
+
 
 class UserSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
@@ -62,5 +63,4 @@ class TicketsSerializer(serializers.ModelSerializer):
 #     aircraft_code = serializers.CharField()
 #     actual_departure = serializers.DateTimeField()
 #     actual_arrival = serializers.DateTimeField()
-
 
