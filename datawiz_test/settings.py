@@ -38,6 +38,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'airtransport.apps.AirtransportConfig',
+    'rest_framework',
 ]
 
 MIDDLEWARE = [
@@ -84,7 +85,7 @@ DATABASES = {
         'ENGINE': 'django.contrib.gis.db.backends.postgis',
         'NAME': 'demo',
         'USER': 'postgres',
-        'PASSWORD': 'root',
+        'PASSWORD': '1234',
         'HOST': 'localhost',
     }
 }
@@ -108,6 +109,11 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
+REST_FRAMEWORK = {
+    'DEFAULT_AUTHENTICATION_CLASSES': [
+        'rest_framework_simplejwt.authentication.JWTAuthentication',
+    ],
+}
 
 # Internationalization
 # https://docs.djangoproject.com/en/3.0/topics/i18n/
