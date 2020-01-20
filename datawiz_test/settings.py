@@ -139,8 +139,8 @@ STATIC_URL = '/static/'
 import dj_database_url
 # db_from_env = dj_database_url.config(conn_max_age=500)
 # DATABASES['default'].update(db_from_env)
-DATABASES['default'] = dj_database_url.config()
-DATABASES['default']['ENGINE'] = 'django.contrib.gis.db.backends.postgis'
+# DATABASES['default'] = dj_database_url.config()
+# DATABASES['default']['ENGINE'] = 'django.contrib.gis.db.backends.postgis'
 
 
 GDAL_LIBRARY_PATH = os.environ.get('GDAL_LIBRARY_PATH')
