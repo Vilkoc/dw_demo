@@ -40,16 +40,9 @@ class BoardingPassesViews(views.APIView):
         boarding_pass.delete()
         return Response(status=status.HTTP_204_NO_CONTENT)
 
-    def post(self, request, format=None):
-        serializer = BoardingPassesSerializer(data=request.data)
-        if serializer.is_valid():
-            serializer.save()
-            return Response(serializer.data, status=status.HTTP_201_CREATED)
-        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
-
 
 class FlightsViewSet(viewsets.ModelViewSet):
-    # permission_classes = [IsAuthenticated]
+    permission_classes = [IsAuthenticated]
     queryset = Flights.objects.all()
     serializer_class = FlightsSerializer
 
@@ -84,13 +77,6 @@ class SeatsDetail(views.APIView):
         seat.delete()
         return Response(status=status.HTTP_204_NO_CONTENT)
 
-    def post(self, request, format=None):
-        serializer = SeatsSerializer(data=request.data)
-        if serializer.is_valid():
-            serializer.save()
-            return Response(serializer.data, status=status.HTTP_201_CREATED)
-        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
-
 
 class TicketFlightsViewSet(viewsets.ModelViewSet):
     queryset = TicketFlights.objects.all()
@@ -102,13 +88,31 @@ class TicketsViewSet(viewsets.ModelViewSet):
     serializer_class = TicketsSerializer
 
 
-class FlightsView(viewsets.ReadOnlyModelViewSet):
-    def get(self, request, pk, format=None):
-        flight = self.get_object(pk)
-        airport
-        serializer = FlightsSerializer(flight)
-        return Response(serializer.data)
-
+# class FlightsView(views.APIView):
+#     def get_object(self, pk):
+#         try:
+#             return Flights.objects.get(pk=pk)
+#         except:
+#             raise Http404
+#
+#     def get(self, request, pk, format=None):
+#         flight = self.get_object(pk)
+#         airport
+#         serializer = FlightsSerializer(flight)
+#         return Response(serializer.data)
+#
+#     def put(self, request, aircraft_code, seat_no, format=None):
+#         seat = self.get_object(aircraft_code, seat_no)
+#         serializer = SeatsSerializer(seat, data=request.data)
+#         if serializer.is_valid():
+#             serializer.save()
+#             return Response(serializer.data)
+#         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+#
+#     def delete(self, request, aircraft_code, seat_no, format=None):
+#         seat = self.get_object(aircraft_code, seat_no)
+#         seat.delete()
+#         return Response(status=status.HTTP_204_NO_CONTENT)
 #
 
 
