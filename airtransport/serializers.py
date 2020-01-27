@@ -52,15 +52,16 @@ class TicketsSerializer(serializers.ModelSerializer):
 #         fields = '__all__'
 
 
-# class FlightsViewSerializer(serializers.ModelSerializer):
-#     flight_id = serializers.IntegerField(read_only=True)
-#     flight_no = serializers.CharField(required=False, allow_blank=True, max_length=100)
-#     scheduled_departure = serializers.DateTimeField(style={'base_template': 'textarea.html'})
-#     scheduled_arrival = serializers.DateTimeField(style={'base_template': 'textarea.html'})
-#     departure_airport = serializers.CharField()
-#     arrival_airport = serializers.CharField()
-#     status = serializers.ChoiceField()
-#     aircraft_code = serializers.CharField()
-#     actual_departure = serializers.DateTimeField()
-#     actual_arrival = serializers.DateTimeField()
+class FlightsViewSerializer(serializers.ModelSerializer):
+    flight_id = serializers.IntegerField(read_only=True)
+    flight_no = serializers.CharField(required=False, allow_blank=True, max_length=100)
+    arrival_city = serializers.CharField(max_length=100)
+    # scheduled_departure = serializers.DateTimeField(style={'base_template': 'textarea.html'})
+    # scheduled_arrival = serializers.DateTimeField(style={'base_template': 'textarea.html'})
+    # departure_airport = serializers.CharField()
+    # arrival_airport = serializers.CharField()
+    # status = serializers.ChoiceField()
+    # aircraft_code = serializers.CharField()
+    # actual_departure = serializers.DateTimeField()
+    # actual_arrival = serializers.DateTimeField()
 
